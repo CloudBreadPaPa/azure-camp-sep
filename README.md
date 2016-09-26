@@ -67,14 +67,24 @@ Queue
 ## Azure SQL 데이터 베이스(SQL Database)  
 #### SQL Database
 소개 및 생성
+- VS 또는 SSMS에서 연결
+- SQL Database vs VM
+- Elastic Pool
+- OSS에서 연결 : https://azure.microsoft.com/en-us/documentation/articles/sql-database-libraries/  
 
 #### DocumnetDB
-소개
+소개  
+NoSQL tutorial: Build a DocumentDB C# console application  
+https://azure.microsoft.com/en-us/documentation/articles/documentdb-get-started-quickstart/
 
 #### HDInsight
-소개
+소개  
+Hadoop tutorial: Get started using Hadoop in HDInsight on Windows  
+https://azure.microsoft.com/en-us/documentation/articles/hdinsight-hadoop-tutorial-get-started-windows/  
+Hadoop tutorial: Get started using Linux-based Hadoop in HDInsight  
+https://azure.microsoft.com/en-us/documentation/articles/hdinsight-hadoop-linux-tutorial-get-started/  
 
-## Azure Machine Learning  
+## Azure Machine Learning
 #### Machine Learning 소개
 #### 모델 생성
 #### 학습 모델
