@@ -1,4 +1,4 @@
-# azure####camp####sep
+# azure camp sep
 이 repo는 2016년 9월 예정된 Azure dev camp 2일차 PaaS 과정에 대한 코드와 hands on 자료를 제공
 
 
