@@ -331,7 +331,7 @@ todo
 ### SQL Database  
 소개 및 생성  
 VS 또는 SSMS에서 연결  
-- SQL Database vs VM  
+SQL Database vs VM  
 
 #### C# 코드
 참고링크 : https://msdn.microsoft.com/library/mt718320.aspx  
@@ -358,6 +358,28 @@ namespace azure_sql_cs
         }
     }
 }
+```
+#### PHP
+참고링크 : https://msdn.microsoft.com/library/mt720665.aspx  
+```
+<?php 
+function OpenConnection()  
+{  
+	try  
+	{  
+		$serverName = "tcp:서버명.database.windows.net,1433";  
+		$connectionOptions = array("Database"=>"DB명",  
+			"Uid"=>"유저아이디", "PWD"=>"비밀번호");  
+		$conn = sqlsrv_connect($serverName, $connectionOptions);  
+		if($conn == false)  
+			die(FormatErrors(sqlsrv_errors()));  
+	}  
+	catch(Exception $e)  
+	{  
+		echo("Error!");  
+	}  
+}  
+?>
 ```
 
 #### node
@@ -391,6 +413,33 @@ connection.on('connect', function(err) {
 소개  
 NoSQL tutorial: Build a DocumentDB C# console application  
 https://azure.microsoft.com/en-us/documentation/articles/documentdb-get-started-quickstart/
+
+#### C# 코드
+참고링크 : https://azure.microsoft.com/en-us/documentation/articles/documentdb-get-started-quickstart/#quickstart  
+```
+// app.config 파일의 내용을 key 값을 생성한 documentdb의 정보로 수정
+...
+<appSettings>
+	<add key="EndpointUri" value="엔드포인트URI로변경" />
+	<add key="PrimaryKey" value="프라이머리키로 변경" />
+</appSettings>
+...
+```
+
+#### node.js
+참고링크 : https://azure.microsoft.com/en-us/documentation/articles/documentdb-nodejs-get-started/  
+```
+npm install  
+```
+```
+// config.js 파일의 정보를 수정
+...
+config.endpoint = "엔드포인트URI";
+config.primaryKey = "프라이머리키";
+...
+```
+이후 코드를 실행하면 console에 documentdb의 작업 내용을 source 흐름대로 처리
+
 
 ### HDInsight
 소개  
