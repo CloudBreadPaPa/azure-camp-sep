@@ -56,12 +56,22 @@ Web App 설정에서 php version 및 php 관련 cofnig 수행
 
 - Web App과 node.js  
 https://azure.microsoft.com/en-us/documentation/articles/app-service-web-nodejs-get-started/  
+```
+app.js 생성
+console.log 코드 추가
+git 등을 이용해 publish 수행
+```
 
 - Web App과 Python  
 https://azure.microsoft.com/en-us/documentation/articles/web-sites-python-ptvs-django-mysql/  
-
+```
+//todo 
+```
 - Web App과 Java  
 https://azure.microsoft.com/en-us/documentation/articles/web-sites-java-get-started/  
+```
+//todo 
+```
 
 ### Demo : WebJobs  
 백그라운드에서 수행되는 작업을 WebJob 으로 실행  
