@@ -98,37 +98,115 @@ Deploy WebJobs using Visual Studio
 https://azure.microsoft.com/en-us/documentation/articles/websites-dotnet-deploy-webjobs/  
 
 ```
-// demo\webjob-cs-with-webapp 프로젝트 참조
-// console 프로젝트 또는 Azure WebJob 프로젝트 템플릿으로 프로젝트 생성
-// ASP.NET web project 생성 후 추가로 console project 생성
-// console project에서 reqeustb.in을 이용해 요청 테스트
-// Web rpoject에서 console 프로젝트를 webjob으로 추가
-// Web App 배포 수행
+// demo\webjob-cs-with-webapp 프로젝트 참조  
+// console 프로젝트 또는 Azure WebJob 프로젝트 템플릿으로 프로젝트 생성  
+// ASP.NET web project 생성 후 추가로 console project 생성  
+// console project에서 reqeustb.in을 이용해 요청 테스트  
+// Web rpoject에서 console 프로젝트를 webjob으로 추가  
+// Web App 배포 수행  
 ```
 
 ### 크기조절 및 테스트
 Web App 크기조절  
 https://azure.microsoft.com/en-us/documentation/articles/web-sites-scale/  
-todo : 크기조절간 안정성을 위한 P&P TransientFaultHandling 관련 내용 정리
+```
+// Web App의 App Service Plan과 크기조절
+```
+참고정보 : Pattern & Practice - Transient Fault Handling  
+https://msdn.microsoft.com/en-us/library/dn440719(v=pandp.60).aspx 
 
 ## Azure 데이터 저장소(Azure Data Storage)  
 ### Azure blob 저장소
-Blob
-- C#
-- node.js
-- PHP
+#### C#
+```
+todo : 
+```
+
+#### node.js
+```
+// 아래 링크에서 정보 확인 https://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-blob-storage/
+
+// 설치
+// npm install azure-storage
+
+// 패키지 import 수행
+var azure = require('azure-storage');
+
+// connection string 작업 
+// environment variable을 구성 | Azure 위에서 구성도 가능
+var tableService = azure.createTableService('<저장소이름>', '<저장소키>');
+
+// 테이블 생성
+tableService.createTableIfNotExists('nodetable', function(error, result, response) {
+  if (!error) {
+    // 수행완료
+	console.log('ok');
+	console.log(response);
+  } else {
+	  console.log(error);
+  }
+});
+```
+#### PHP
+```
+<?php
+// composer를 이용해 PHP Azure client를 설치
+// https://azure.microsoft.com/en-us/documentation/articles/storage-php-how-to-use-blobs/
+
+require_once 'vendor\autoload.php';
+
+use WindowsAzure\Common\ServicesBuilder;
+use WindowsAzure\Blob\Models\CreateContainerOptions;
+use WindowsAzure\Blob\Models\PublicAccessType;
+use WindowsAzure\Common\ServiceException;
+
+// https://azure.microsoft.com/en-us/documentation/articles/storage-php-how-to-use-blobs/
+
+// Storage의 connection string 제공
+$connectionString = "DefaultEndpointsProtocol=http;AccountName=<저장소이름>;AccountKey=<저장소키>";
+
+// REST proxy 생성
+$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
+
+$createContainerOptions = new CreateContainerOptions();
+
+//setPublicAccess 접근 정책 설정
+
+// CONTAINER_AND_BLOBS:
+// 전체 엑세스 권한
+//
+// BLOBS_ONLY:
+// blob들에 대해서만 읽기 권한. 
+$createContainerOptions->setPublicAccess(PublicAccessType::CONTAINER_AND_BLOBS);
+
+// 컨테이너 메타데이터 설정
+$createContainerOptions->addMetaData("VSTechUp", "Visual Studio");
+$createContainerOptions->addMetaData("Azure", "Cloud");
+
+try {
+    // 컨테이너 생성
+    $blobRestProxy->createContainer("phpcontainer", $createContainerOptions);
+}
+catch(ServiceException $e){
+    // 에러 핸들링
+    $code = $e->getCode();
+    $error_message = $e->getMessage();
+    echo $code.": ".$error_message."<br />";
+}
+
+?>
+
+```
 
 ### Azure table 저장소
-Table
-- C#
-- node.js
-- PHP
+#### C#
+#### node.js
+#### PHP
 
 ### Azure queue 저장소
-Queue
-- C#
-- node.js
-- PHP
+#### C#
+#### node.js
+#### PHP
 
 ### Azure files
 내용 소개  
