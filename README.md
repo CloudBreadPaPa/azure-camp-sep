@@ -117,9 +117,26 @@ https://msdn.microsoft.com/en-us/library/dn440719(v=pandp.60).aspx
 
 ## Azure 데이터 저장소(Azure Data Storage)  
 ### Azure blob 저장소
-#### C#
+#### C# 코드  
+참고링크 : https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-blobs/  
 ```
-todo : 
+public static void CreateContainer()
+{
+    // 저장소 연결 문자열 처리
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+    // client 개체 생성
+    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+
+    // 컨테이너 개체 참조
+    CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
+
+    // 컨테이너가 없으면 생성
+    container.CreateIfNotExists();
+
+    return;
+}
 ```
 
 #### node.js
@@ -199,17 +216,116 @@ catch(ServiceException $e){
 ```
 
 ### Azure table 저장소
-#### C#
+#### C# 코드  
+참고링크 : https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-tables/
+```
+// 저장소 연결 문자열 처리
+CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+// table 클라이언트 개체 생성
+CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+
+// 테이블 참조 설정 
+CloudTable table = tableClient.GetTableReference("people");
+
+// 테이블이 존재하지 않으면 생성
+table.CreateIfNotExists();
+```
 #### node.js
+```
+// 아래 링크에서 정보 확인 https://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-blob-storage/
+
+// 설치
+// npm install azure-storage
+
+// 패키지 import 수행
+var azure = require('azure-storage');
+
+// connection string 작업 
+// environment variable을 구성 | Azure 위에서 구성도 가능
+var tableService = azure.createTableService('<저장소계정>', '<저장소키>');
+
+// 테이블 생성
+tableService.createTableIfNotExists('nodetable', function(error, result, response) {
+  if (!error) {
+    // 수행완료
+	console.log('ok');
+	console.log(response);
+  } else {
+	  console.log(error);
+  }
+});
+```
+
 #### PHP
+```
+<?php
+// https://azure.microsoft.com/en-us/documentation/articles/storage-php-how-to-use-table-storage/
+require_once 'vendor\autoload.php';
+//ini_set('display_errors', 1);
+//error_reporting(~0);
+
+use WindowsAzure\Common\ServicesBuilder;
+use WindowsAzure\Common\ServiceException;
+
+// Storage의 connection string 제공
+$connectionString = "DefaultEndpointsProtocol=http;AccountName=<저장소계정>;AccountKey=<어카운트키>";
+
+// Azure의 table storage를 위한 REST proxy 생성
+$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+
+/////////////////////////////////////////////////////////////////
+// 01 테이블 생성
+/////////////////////////////////////////////////////////////////
+try {
+    // 테이블 생성
+    $tableRestProxy->createTable("phptable");
+}
+catch(ServiceException $e){
+    $code = $e->getCode();
+    $error_message = $e->getMessage();
+    echo $code.": ".$error_message."<br />";
+}
+?>
+```
 
 ### Azure queue 저장소
-#### C#
-#### node.js
-#### PHP
+#### C# 참고링크
+https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-queues/  
+```
+public static void CreateQueue()
+{
+    // 연결 문자열 처리
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+    // 큐 클라이언트 개체 생성
+    CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+
+    // 큐 참조 설정
+    CloudQueue queue = queueClient.GetQueueReference("myqueue");
+
+    // 큐가 없으면 생성
+    queue.CreateIfNotExists();
+}
+```
+
+#### node.js 참고링크
+https://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-queues/  
+```
+todo
+```
+
+#### PHP 참고링크
+https://azure.microsoft.com/en-us/documentation/articles/storage-php-how-to-use-queues/  
+```
+todo
+```
 
 ### Azure files
-내용 소개  
+참고링크 : https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-files/  
+주의사항으로, outbound 445 가 열려 있어야 하는 제한이 있으며, ISP에 따라서 다름.  
 
 ## Azure SQL 데이터 베이스(SQL Database)  
 ### SQL Database
