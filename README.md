@@ -38,9 +38,21 @@ Azure portal에서 연속 배포 설정
 ### 다양한 언어 지원
 - Web App과 C# - ASP.NET
 https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-get-started/  
+```
+VS에서 ASP.NET 프로젝트 생성
+빌드, 디버그, 실행
+생성된 Project를 VS에서 게시 수행
+```
 
 - Web App과 PHP  
 https://azure.microsoft.com/en-us/documentation/articles/app-service-web-php-get-started/  
+```
+index.php 생성
+phpinfo() 코드 추가
+WebMatrix 또는 git을 이용해 publish 수행
+Web App 설정에서 php version 및 php 관련 cofnig 수행
+```
+
 
 - Web App과 node.js  
 https://azure.microsoft.com/en-us/documentation/articles/app-service-web-nodejs-get-started/  
