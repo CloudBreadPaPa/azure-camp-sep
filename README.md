@@ -98,8 +98,12 @@ Deploy WebJobs using Visual Studio
 https://azure.microsoft.com/en-us/documentation/articles/websites-dotnet-deploy-webjobs/  
 
 ```
+// demo\webjob-cs-with-webapp 프로젝트 참조
 // console 프로젝트 또는 Azure WebJob 프로젝트 템플릿으로 프로젝트 생성
-todo : 
+// ASP.NET web project 생성 후 추가로 console project 생성
+// console project에서 reqeustb.in을 이용해 요청 테스트
+// Web rpoject에서 console 프로젝트를 webjob으로 추가
+// Web App 배포 수행
 ```
 
 ### 크기조절 및 테스트

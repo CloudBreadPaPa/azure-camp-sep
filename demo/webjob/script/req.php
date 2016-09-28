@@ -1,4 +1,4 @@
 <?php
-    $result = file_get_contents('http://requestb.in/171fsky1');
+    $result = file_get_contents('http://requestb.in/링크부분');
     echo $result;
 ?>
