@@ -314,13 +314,13 @@ public static void CreateQueue()
 #### node.js 참고링크
 https://azure.microsoft.com/en-us/documentation/articles/storage-nodejs-how-to-use-queues/  
 ```
-todo
+todo  
 ```
 
 #### PHP 참고링크
 https://azure.microsoft.com/en-us/documentation/articles/storage-php-how-to-use-queues/  
 ```
-todo
+todo  
 ```
 
 ### Azure files
@@ -328,11 +328,11 @@ todo
 주의사항으로, outbound 445 가 열려 있어야 하는 제한이 있으며, ISP에 따라서 다름.  
 
 ## Azure SQL 데이터 베이스(SQL Database)  
-### SQL Database
-소개 및 생성
-- VS 또는 SSMS에서 연결
-- SQL Database vs VM
-- Elastic Pool
+### SQL Database  
+소개 및 생성  
+- VS 또는 SSMS에서 연결  
+- SQL Database vs VM  
+- Elastic Pool  
 - OSS에서 연결 : https://azure.microsoft.com/en-us/documentation/articles/sql-database-libraries/  
 
 ### DocumnetDB
