@@ -117,6 +117,11 @@ https://msdn.microsoft.com/en-us/library/dn440719(v=pandp.60).aspx
 
 ## Azure 데이터 저장소(Azure Data Storage)  
 ### Azure blob 저장소
+Azure Storage 개발에 유용한 Storage Explorer 도구 다운로드 
+http://storageexplorer.com/  
+
+Storage Exploerer 설치 후 Azure Portal에서 저장소 계정(Storage Account)의 엑세스 키 - 연결문자열을 넣으면 해당 저장소 계정에 Storage Explorer로 바로 접근 가능합니다.  
+
 #### C# 코드  
 참고링크 : https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-blobs/  
 ```
